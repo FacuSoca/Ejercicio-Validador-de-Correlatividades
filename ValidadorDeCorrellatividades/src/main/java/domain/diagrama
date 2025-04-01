@@ -1,0 +1,34 @@
+@startuml
+
+Alumno --->"*"  Materia
+Inscripcion --->"*"  Materia
+Inscripcion ---> Alumno
+Materia ---> Materia
+class Alumno {
+    - nombre: String
+    - apellido: String
+    - materiasAprobadas: Set<Materia>
+
+   + agregarMateriaAprobada(Materia materia): void
+   + materiasAprobadas(): Set<Materia>
+}
+
+class Materia{
+    - nombre: String
+    -  correlativas: Set<Materia>
+
+    + cumpleCorrelativas(Set<Materia> materiasAprobadas): boolean
+    + getMateriasAprobadas(): Set<Materia> materias
+
+}
+
+class Inscripcion{
+    -materiaAcursar: Set<Materia>
+    -fueAprobada: boolean
+    -alumno: Alumno
+    -fechaDeEvaluacion: LocalDateTime
+
+    +aprobada(): boolean
+
+}
+@endunl
